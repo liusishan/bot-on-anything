@@ -13,6 +13,8 @@ user_session = dict()
 class ChatGPTModel(Model):
     def __init__(self):
         openai.api_key = model_conf(const.OPEN_AI).get('api_key')
+        if model_conf(const.OPEN_AI).get('api_base'):
+            openai.api_base = model_conf(const.OPEN_AI).get('api_base')
         proxy = model_conf(const.OPEN_AI).get('proxy')
         if proxy:
             openai.proxy = proxy
